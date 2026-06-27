@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Reporte Mensual Zent Dinero {{this.name}}</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 40px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        h1{
+            color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <h1>Zent Dinero - Reporte de Ingresos de {{this.name}}</h1>
+    
+    <table>
+        <tr>
+            <th>Movimiento</th>
+            <th>Tipo de operacion</th>
+            <th>Monto</th>
+        </tr>
+        {{#each historiales}}
+        <tr>
+            <td>{{this.nameMovement}} Bs</td>
+            <td>{{this.typeOperation}} Bs</td>
+            <td>{{this.money}} Bs</td>
+        </tr>
+        {{/each}}
+    </table>
+</body>
+</html>
