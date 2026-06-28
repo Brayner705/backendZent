@@ -25,7 +25,7 @@ connectDB();
 // updateInterest.start() // Iniciar el cron job para actualizar intereses
 
 app.use('/auth', registerRouter);
-app.use('/auth', loginRoutes);
+app.use('/auth', loginRoutes); 
 app.use('/income', incomeRoutes);
 app.use('/spent', spentRoutes);
 app.use('/history', historyRoutes);
@@ -35,6 +35,6 @@ app.use('/goal', goalRouter)
 
 app.listen(PORT);
 
-export default app
+// export default app
 
 console.log(`Server is running on port ${PORT}`);

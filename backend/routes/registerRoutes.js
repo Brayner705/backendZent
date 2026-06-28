@@ -17,16 +17,16 @@ router.post('/user/record', async (req, res) => {
     const newSpent = new Spent({ user_id: userSave._id });
     await newSpent.save();
 
-
     res
       .status(201)
-      .json({ message: 'User registered successfully', status: 'true', user: userSave });
+      .json({ message: 'User registered successfully', status: true, user: userSave });
   } catch (error) {
     if (error.code === 11000) {
-      return res.status(400).send({ error: 'Username already exists' });
+      return res.status(400).send({ error: 'El nombre de usuario ya existe' });
     }
     return res.status(500).send({ error: 'Error registering user' });
   }
+
 });
 
 export default router;

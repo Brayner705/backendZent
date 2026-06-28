@@ -12,6 +12,7 @@ export const tokenverify = (req,res)=>{
 
         const verify = jwt.verify(token, process.env.JWT_SECRET)
         req.user = verify
+        
         return res.status(200).send({message: 'Token is valid', user: verify})
 
     } catch(error){
