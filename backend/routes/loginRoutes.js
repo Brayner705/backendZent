@@ -17,7 +17,6 @@ router.post('/user/login', async (req, res) => {
     }
 
     const user = await User.findOne({ username });
-
     if (!user) return res.status(404).json({ error: 'User not found', status: 'false' });
 
     const match = await user.comparePassword(password);
@@ -56,16 +55,19 @@ router.get('/get/username/:user_id', async (req,res)=>{
 router.get('/dashboard/:user_id', async (req, res) => {
   try {
     const { user_id } = req.params;
+
     const user = await User.findById(user_id) 
     const lastHistory = await History.find({user_id}).sort({createAt: -1}).limit(10)
 
     const goal = await Goals.findOne({user_id})
 
-
     if (!user) {
       return res.status(404).json({ error: 'User not found' });
     }
-
+    
+    if(goal == null) {
+      return res.status(200).json({ totalMoney: user.totalMoney, username: user.username, lastHistory, goal : {nameGoal: '', percentage: 0}});
+    }
     return res.status(200).json({ totalMoney: user.totalMoney, username: user.username, lastHistory, goal});
 
   } catch (error) {
